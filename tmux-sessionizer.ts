@@ -22,36 +22,22 @@ const encoder = new TextEncoder()
 const decoder = new TextDecoder()
 
 await fzf.stdin.write(encoder.encode(dirs.join('\n')))
-
 await fzf.stdin.close()
 
 const chosenDir = decoder.decode(await fzf.output())
 const sessionName = basename(chosenDir).replaceAll('.', '_').trim()
 
-console.log(sessionName)
-
-const h = await hasSession(sessionName)
-
-console.log(h)
-
 try {
-  if (h) {
-    await switchSession(sessionName)
-  } else {
+  if (!(await hasSession(sessionName))) {
     await createSession(sessionName, chosenDir)
   }
+
+  await switchSession(sessionName)
 } catch (e) {
   console.error(e)
 }
 
-// const p = Deno.run({
-//   cmd: ['tmux', 'switchc -t '],
-//   stdout: 'piped',
-//   stdin: 'piped',
-// })
-
 fzf.close()
-Deno.exit()
 
 async function hasSession(sessionName: string) {
   const tmux = Deno.run({
