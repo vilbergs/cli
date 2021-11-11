@@ -10,12 +10,6 @@ const exec = async (...args: string[]) => {
 
   const status = await tmux.status()
 
-  if (status.code > 0) {
-    const decoder = new TextDecoder()
-
-    console.error(decoder.decode(await tmux.stderrOutput()))
-  }
-
   tmux.close()
 
   return status
@@ -41,7 +35,7 @@ function createSession() {
 
       return methods
     },
-    exec: () => exec(...sessionArgs, '-d'),
+    exec: () => exec(...sessionArgs),
   }
 
   return methods

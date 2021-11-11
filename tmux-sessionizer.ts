@@ -9,7 +9,7 @@ if (!HOME) {
 
 const dirs = []
 
-for await (const dir of Deno.readDir(HOME)) {
+for await (const dir of Deno.readDir(`${HOME}/sites`)) {
   dirs.push(resolve(HOME, dir.name))
 }
 
@@ -30,19 +30,10 @@ const sessionName = basename(chosenDir).replaceAll('.', '_').trim()
 
 try {
   if (!(await tmux.hasSession(sessionName))) {
-    console.log('here')
-    const status = await tmux
-      .createSession()
-      .name(sessionName)
-      .directory(chosenDir)
-      .exec()
-
-    console.log(status)
+    await tmux.createSession().name(sessionName).directory(chosenDir).exec()
   }
 
-  const status = await tmux.switchClient().target(sessionName).exec()
-
-  console.log(status)
+  await tmux.switchClient().target(sessionName).exec()
 } catch (e) {
   console.error('Error', e)
 }
