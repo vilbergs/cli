@@ -6,7 +6,7 @@ interface Profile {
 }
 
 const HOME = Deno.env.get('HOME')
-const CONFIG_PATH = `/${HOME}/.config/karabiner/karabiner.json`
+const CONFIG_PATH = `${HOME}/.config/karabiner/karabiner.json`
 
 const encoder = new TextEncoder()
 const decoder = new TextDecoder('UTF-8')
