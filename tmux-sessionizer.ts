@@ -1,5 +1,5 @@
 import { resolve, basename } from 'https://deno.land/std/path/mod.ts'
-import tmux from './tmux.ts'
+import tmux from './modules/tmux.ts'
 
 const HOME = Deno.env.get('HOME')
 
