@@ -30,7 +30,12 @@ const sessionName = basename(chosenDir).replaceAll('.', '_').trim()
 
 try {
   if (!(await tmux.hasSession(sessionName))) {
-    await tmux.createSession().name(sessionName).directory(chosenDir).exec()
+    await tmux
+      .createSession()
+      .name(sessionName)
+      .directory(chosenDir)
+      .detached()
+      .exec()
   }
 
   await tmux.switchClient().target(sessionName).exec()

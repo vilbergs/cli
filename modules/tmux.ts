@@ -33,6 +33,12 @@ function createSession() {
     directory(name: string) {
       sessionArgs.push('-c', name)
 
+      console.log(name)
+      return methods
+    },
+    detached() {
+      sessionArgs.push('-d')
+
       return methods
     },
     exec: () => exec(...sessionArgs),
