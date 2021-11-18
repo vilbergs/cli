@@ -8,15 +8,24 @@ A collection of Deno command line utils for my dev workflow.
 - tmux
 - fzf
 
-## Installing
+## Tools
 
 You can install binaries via `deno install`. See the [docs](https://deno.land/manual/tools/script_installer) for more examples.
 
 ### git-compare
 
+Git compare compares your checked out branch with a branch of your choice
+
 ```bash
 deno install -f --allow-run https://raw.githubusercontent.com/vilbergs/cli/main/git-compare.ts
 ```
+
+#### Usage
+
+
+`$ git-compare [branch-to-compare]`
+
+Example: `$ git-compare main`
 
 ### change-karabiner-country-code
 
