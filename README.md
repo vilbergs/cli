@@ -27,14 +27,21 @@ deno install -f --allow-run https://raw.githubusercontent.com/vilbergs/cli/main/
 
 Example: `$ git-compare main`
 
+<hr>
+
 ### change-karabiner-country-code
 
 ```bash
 deno install -f --allow-read --allow-write --allow-env  https://raw.githubusercontent.com/vilbergs/cli/main/change-karabiner-country-code.ts
 ```
 
+
+<hr>
+
 ### tmux-sessionizer
 
 ```bash
 deno install -f --allow-read --allow-env --allow-run https://raw.githubusercontent.com/vilbergs/cli/main/tmux-sessionizer.ts
 ```
+
+<hr>
