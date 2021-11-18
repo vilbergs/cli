@@ -16,7 +16,6 @@ if (!compareBranch) {
   Deno.exit(1)
 }
 
-console.log(branch, compareBranch)
 if (branch === compareBranch) {
   console.log(
     `Checked out branch and default branch are the same. Nothing to compare`
