@@ -27,7 +27,7 @@ if (branch === compareBranch) {
 const browser = Deno.run({
   cmd: [
     'open',
-    `https://github.com/${repo}/compare/${compareBranch}...${branch}`,
+    `https://github.com/${repo}/compare/${compareBranch}..${branch}`,
   ],
 })
 
