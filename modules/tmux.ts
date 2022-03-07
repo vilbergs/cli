@@ -10,15 +10,39 @@ const exec = async (...args: string[]) => {
 
   const status = await tmux.status()
 
-  tmux.close()
-
   return status
+}
+
+async function hasServer() {
+  const status = await exec('info')
+
+  return status.success
 }
 
 async function hasSession(sessionName: string) {
   const status = await exec('has-session', '-t', sessionName)
 
   return status.success
+}
+
+function attach() {
+  const sessionArgs = ['attach']
+
+  const methods = {
+    target(name: string) {
+      sessionArgs.push('-t', name)
+
+      return methods
+    },
+    directory(name: string) {
+      sessionArgs.push('-c', name)
+
+      return methods
+    },
+    exec: () => exec(...sessionArgs),
+  }
+
+  return methods
 }
 
 function createSession() {
@@ -56,11 +80,6 @@ function switchClient() {
 
       return methods
     },
-    directory(name: string) {
-      sessionArgs.push('-c', name)
-
-      return methods
-    },
     exec: () => exec(...sessionArgs),
   }
 
@@ -68,7 +87,10 @@ function switchClient() {
 }
 
 export default {
+  hasServer,
   hasSession,
+  attach,
   createSession,
   switchClient,
+  exec,
 }
