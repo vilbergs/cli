@@ -2,13 +2,14 @@
 
 const search = Deno.args
 
-console.log(`"${search.join('|')}"`)
-
 const browser = Deno.run({
+  env: {
+    LC_ALL: 'C',
+  },
   cmd: [
     'grep',
     '-rlE',
-    `--exclude-dir=node_modules`,
+    '--exclude-dir=node_modules',
     '--exclude-dir=./exam/public',
     '--exclude-dir=dist',
     '--exclude-dir=.yalc',
