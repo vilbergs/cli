@@ -29,12 +29,23 @@ Example: `$ git-compare main`
 
 <hr>
 
-### change-karabiner-country-code
+### `change-karabiner-country-code`
 
 ```bash
 deno install -f --allow-read --allow-write --allow-env  https://raw.githubusercontent.com/vilbergs/cli/main/change-karabiner-country-code.ts
 ```
 
+<hr>
+
+### codegrep
+
+Recursively search for text occurences in the whole directory
+
+```bash
+deno install -f --allow-run https://raw.githubusercontent.com/vilbergs/cli/main/codegrep.ts
+```
+
+Example: `$ codegrep someCodeA someCodeB`
 
 <hr>
 
@@ -45,3 +56,5 @@ deno install -f --allow-read --allow-env --allow-run https://raw.githubuserconte
 ```
 
 <hr>
+
+
