@@ -1,3 +1,4 @@
+use arboard::Clipboard;
 use clap::Parser;
 
 /// Simple program to greet a person
@@ -10,6 +11,7 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
+    let mut clipboard = Clipboard::new().unwrap();
 
     let list = args
         .list
@@ -18,5 +20,11 @@ fn main() {
         .collect::<Vec<&str>>()
         .join("\n");
 
+    println!("===========================");
     println!("{}", list);
+    println!("===========================");
+    println!("=== Copied to clipboard ===");
+    println!("===========================");
+
+    clipboard.set_text(list).unwrap();
 }
