@@ -128,18 +128,6 @@ fn main() -> Result<(), Error> {
                         _ => Cell::new(v),
                     };
 
-                    if v.is_string() {
-                        let maybe_date = NaiveDateTime::from_str(v.as_str().unwrap_or(""));
-
-                        println!("{} - {:?}", v, maybe_date);
-                    }
-
-                    if v.is_string()
-                        && let Ok(datetime) = NaiveDateTime::from_str(v.as_str().unwrap())
-                    {
-                        return Cell::new(datetime.format("%Y-%m-%d %H:%M:%S")).fg(Color::Blue);
-                    }
-
                     cell
                 })
                 .collect()
