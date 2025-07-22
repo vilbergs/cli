@@ -22,7 +22,6 @@ deno install -f --allow-run https://raw.githubusercontent.com/vilbergs/cli/main/
 
 #### Usage
 
-
 `$ git-compare [branch-to-compare]`
 
 Example: `$ git-compare main`
@@ -56,5 +55,3 @@ deno install -f --allow-read --allow-env --allow-run https://raw.githubuserconte
 ```
 
 <hr>
-
-
