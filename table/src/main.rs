@@ -121,9 +121,8 @@ fn main() -> Result<(), Error> {
                             Cell::from(str).fg(color)
                         }
                         Value::Number(_) => Cell::new(v).fg(Color::Yellow),
-                        Value::Array(_) => {
-                            Cell::new(&Value::from_str("[ARRAY]").unwrap()).fg(Color::White)
-                        }
+                        Value::Array(_) => Cell::new("[ARRAY]").fg(Color::Grey),
+                        Value::Object(_) => Cell::new("[OBJECT]").fg(Color::Grey),
 
                         _ => Cell::new(v),
                     };
